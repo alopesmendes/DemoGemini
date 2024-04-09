@@ -1,4 +1,4 @@
-package com.ippon.demogemini
+package com.ippon.demogemini.core
 
 /**
  * A sealed hierarchy describing the state of the text generation.
@@ -19,7 +19,7 @@ sealed interface SummarizeUiState {
      * Text has been generated
      */
     data class Success(
-        val outputText: String
+        val outputText: String,
     ) : SummarizeUiState
 
     /**
