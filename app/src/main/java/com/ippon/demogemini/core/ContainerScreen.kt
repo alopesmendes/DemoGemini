@@ -49,7 +49,7 @@ fun ContainerScreen(
                 destinations.forEach { d ->
                     NavigationDrawerItem(
                         label = { Text(text = d.label) },
-                        selected = selectedDestination == d || d == Destination.GenerateContent,
+                        selected = (selectedDestination == null && d == Destination.GenerateContent) || selectedDestination == d,
                         onClick = {
                             onClick(d)
                             scope.launch {
@@ -67,7 +67,11 @@ fun ContainerScreen(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
                 CenterAlignedTopAppBar(
-                    title = { Text(text = selectedDestination?.label ?: Destination.GenerateContent.label ) },
+                    title = {
+                        Text(
+                            text = selectedDestination?.label ?: Destination.GenerateContent.label
+                        )
+                    },
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch {
