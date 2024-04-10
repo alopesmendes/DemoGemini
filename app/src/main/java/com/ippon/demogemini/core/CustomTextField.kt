@@ -5,6 +5,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +17,7 @@ import com.ippon.demogemini.R
 @Composable
 fun CustomTextField(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     prompt: String,
     onValueChange: (String) -> Unit,
     onSend: (String) -> Unit,
@@ -29,7 +32,13 @@ fun CustomTextField(
         modifier = modifier.fillMaxWidth(),
         leadingIcon = leadingIcon,
         trailingIcon = {
-            IconButton(onClick = { onSend(prompt) }) {
+            IconButton(
+                onClick = { onSend(prompt) },
+                enabled = enabled,
+                colors = IconButtonDefaults.filledIconButtonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                )
+            ) {
                 Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Send Prompt")
             }
         },

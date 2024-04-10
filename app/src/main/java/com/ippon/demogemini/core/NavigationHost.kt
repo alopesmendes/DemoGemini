@@ -14,6 +14,8 @@ import com.ippon.demogemini.generate_content.GenerateContentRoute
 import com.ippon.demogemini.generate_content.GenerateContentViewModel
 import com.ippon.demogemini.generate_content_image.GenerateContentImageRoute
 import com.ippon.demogemini.generate_content_image.GenerateContentImageViewModel
+import com.ippon.demogemini.streaming.GenerateContentStreamingRoute
+import com.ippon.demogemini.streaming.GenerateContentStreamingViewModel
 
 @Composable
 fun NavigationHost(
@@ -70,8 +72,12 @@ fun NavigationHost(
         }
 
         composable(
-            route = Destination.GenerateChat.fullRoute,
+            route = Destination.Streaming.route,
         ) {
+            val generateContentStreamingViewModel = GenerateContentStreamingViewModel(
+                generativeModel = generativeModel,
+                generativeModelVision = generativeModelVision,
+            )
             ContainerScreen(
                 destinations = destinations,
                 selectedDestination = selectedDestination,
@@ -79,11 +85,12 @@ fun NavigationHost(
                     selectedDestination = d
                 },
             ) {
+                GenerateContentStreamingRoute(generateContentStreamingViewModel)
             }
         }
 
         composable(
-            route = Destination.Streaming.fullRoute,
+            route = Destination.GenerateChat.fullRoute,
         ) {
             ContainerScreen(
                 destinations = destinations,

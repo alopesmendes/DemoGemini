@@ -26,6 +26,7 @@ import coil.request.ImageRequest
 @Composable
 fun CustomTextImageField(
     modifier: Modifier = Modifier,
+    isOnlyImagePrompt: Boolean = false,
     prompt: String,
     onSend: (Bitmap?, String) -> Unit,
     onValueChange: (String) -> Unit,
@@ -40,6 +41,7 @@ fun CustomTextImageField(
 
         CustomTextField(
             prompt = prompt,
+            enabled = !isOnlyImagePrompt || photoUri != null,
             onValueChange = onValueChange,
             onSend = {
                 onSend(photoUri?.let { uri -> Tools.uriToBitmap(context, uri) }, prompt)
@@ -54,7 +56,6 @@ fun CustomTextImageField(
                             )
                         )
                     },
-                    enabled = photoUri != null,
                 ) {
                     Icon(
                         Icons.Filled.Add,
