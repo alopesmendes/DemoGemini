@@ -9,7 +9,10 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.ai.client.generativeai.Chat
 import com.google.ai.client.generativeai.GenerativeModel
+import com.ippon.demogemini.generate_chat.GenerateContentChatRoute
+import com.ippon.demogemini.generate_chat.GenerateContentChatViewModel
 import com.ippon.demogemini.generate_content.GenerateContentRoute
 import com.ippon.demogemini.generate_content.GenerateContentViewModel
 import com.ippon.demogemini.generate_content_image.GenerateContentImageRoute
@@ -19,6 +22,7 @@ import com.ippon.demogemini.streaming.GenerateContentStreamingViewModel
 
 @Composable
 fun NavigationHost(
+    chat: Chat,
     generativeModel: GenerativeModel,
     generativeModelVision: GenerativeModel,
 ) {
@@ -90,8 +94,9 @@ fun NavigationHost(
         }
 
         composable(
-            route = Destination.GenerateChat.fullRoute,
+            route = Destination.GenerateChat.route,
         ) {
+            val generateContentChatViewModel = GenerateContentChatViewModel(chat)
             ContainerScreen(
                 destinations = destinations,
                 selectedDestination = selectedDestination,
@@ -99,11 +104,14 @@ fun NavigationHost(
                     selectedDestination = d
                 },
             ) {
+                GenerateContentChatRoute(
+                    generateContentChatViewModel = generateContentChatViewModel
+                )
             }
         }
 
         composable(
-            route = Destination.Bonus.fullRoute
+            route = Destination.Bonus.route,
         ) {
             ContainerScreen(
                 destinations = destinations,

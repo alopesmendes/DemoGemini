@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
             modelName = "gemini-pro-vision",
             apiKey = BuildConfig.apiKey
         )
+        val chat = generativeModel.startChat()
         setContent {
             DemoGeminiTheme {
                 // A surface container using the 'background' color from the theme
@@ -33,6 +34,7 @@ class MainActivity : ComponentActivity() {
                     NavigationHost(
                         generativeModel = generativeModel,
                         generativeModelVision = generativeModelVision,
+                        chat = chat,
                     )
                 }
             }

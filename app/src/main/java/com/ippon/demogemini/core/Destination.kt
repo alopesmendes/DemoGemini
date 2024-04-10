@@ -31,6 +31,7 @@ sealed class Destination(
 
     data object Streaming : Destination(
         route = "streaming",
+        // Continuos chat
         label = "Streaming",
     )
 
@@ -43,7 +44,7 @@ sealed class Destination(
 val destinations = listOf(
     Destination.GenerateContent,
     Destination.GenerateContentImage,
-    Destination.GenerateChat,
     Destination.Streaming,
+    Destination.GenerateChat,
     Destination.Bonus,
 )
