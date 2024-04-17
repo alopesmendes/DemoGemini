@@ -19,8 +19,17 @@ class GenerateContentViewModel(
         _uiState.asStateFlow()
 
     fun generateContent(prompt: String) {
+        // _uiState.update { SummarizeUiState.Loading }
+        // viewModelScope.launch {
+        //    try {
+        //         val content = generativeModel.generateContent(prompt)
+        //        _uiState.update { SummarizeUiState.Success(content.text ?: "") }
+        //    } catch (e: Exception) {
+         //       _uiState.update { SummarizeUiState.Error(e.message ?: "") }
+         //   }
+        _uiState.update { SummarizeUiState.Loading }
+
         viewModelScope.launch {
-            _uiState.update { SummarizeUiState.Loading }
             try {
                 val content = generativeModel.generateContent(prompt)
                 _uiState.update { SummarizeUiState.Success(content.text ?: "") }

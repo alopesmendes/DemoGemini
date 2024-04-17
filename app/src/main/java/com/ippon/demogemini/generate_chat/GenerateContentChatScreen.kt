@@ -33,6 +33,8 @@ import com.google.ai.client.generativeai.type.asTextOrNull
 import com.halilibo.richtext.markdown.Markdown
 import com.halilibo.richtext.ui.material3.RichText
 import com.ippon.demogemini.core.CustomTextField
+import com.ippon.demogemini.core.StateData
+import com.ippon.demogemini.core.StateData.*
 
 @Composable
 fun GenerateContentChatScreen(
@@ -94,8 +96,8 @@ fun GenerateContentChatScreen(
             }
             item {
                 when (chatState.stateData) {
-                    StateData.Initial -> {}
-                    StateData.Loading -> {
+                    Initial -> {}
+                    Loading -> {
                         Box(modifier = Modifier.fillMaxWidth()) {
                             Box(
                                 contentAlignment = Alignment.Center,
@@ -108,7 +110,7 @@ fun GenerateContentChatScreen(
                         }
                     }
 
-                    StateData.Error -> {
+                    Error -> {
                         chatState.errorMessage?.let {
                             Text(
                                 text = it,
@@ -118,7 +120,7 @@ fun GenerateContentChatScreen(
                         }
                     }
 
-                    StateData.Success -> {
+                    Success -> {
 
                     }
                 }

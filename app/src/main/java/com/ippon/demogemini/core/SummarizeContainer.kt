@@ -42,9 +42,6 @@ fun SummarizeContainer(
     var prompt by rememberSaveable {
         mutableStateOf("")
     }
-    var outputText by rememberSaveable {
-        mutableStateOf("")
-    }
     Column(
         modifier = Modifier
             .fillMaxSize()

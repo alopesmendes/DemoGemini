@@ -28,9 +28,11 @@ class GenerateContentImageViewModel(
             _uiState.update { SummarizeUiState.Loading }
             try {
                 val content = generativeModel.generateContent(
+                    // kotlin dsl builder
                     content {
                         image(image)
                         text(prompt)
+
                     }
                 )
                 _uiState.update {

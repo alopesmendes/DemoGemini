@@ -11,6 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.ai.client.generativeai.Chat
 import com.google.ai.client.generativeai.GenerativeModel
+import com.ippon.demogemini.bonus.GenerateContentBonusRoute
+import com.ippon.demogemini.bonus.GenerateContentBonusViewModel
 import com.ippon.demogemini.generate_chat.GenerateContentChatRoute
 import com.ippon.demogemini.generate_chat.GenerateContentChatViewModel
 import com.ippon.demogemini.generate_content.GenerateContentRoute
@@ -113,6 +115,9 @@ fun NavigationHost(
         composable(
             route = Destination.Bonus.route,
         ) {
+            val generateContentBonusViewModel = GenerateContentBonusViewModel(
+                generativeModelVision
+            )
             ContainerScreen(
                 destinations = destinations,
                 selectedDestination = selectedDestination,
@@ -120,6 +125,7 @@ fun NavigationHost(
                     selectedDestination = d
                 },
             ) {
+                GenerateContentBonusRoute(generateContentBonusViewModel)
             }
         }
     }

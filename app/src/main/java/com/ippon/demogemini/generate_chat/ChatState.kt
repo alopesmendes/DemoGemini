@@ -1,10 +1,7 @@
 package com.ippon.demogemini.generate_chat
 
 import com.google.ai.client.generativeai.type.Content
-
-enum class StateData {
-    Initial, Loading, Error, Success
-}
+import com.ippon.demogemini.core.StateData
 
 data class ChatState(
     val history: List<Content> = emptyList(),
