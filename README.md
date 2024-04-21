@@ -12,7 +12,7 @@
     * [3. Streaming](#3-streaming)
     * [4. Generate Chat](#4-generate-chat)
     * [5. Bonus](#5-bonus)
-  * [Contrubuting](#contrubuting-)
+  * [Contributing](#contributing-)
 <!-- TOC -->
 
 This project demonstrates the capabilities of Gemini, a large language model from Google, within an Android application. It showcases various functionalities for text generation, image-text generation, streaming responses, conversational interaction, and token counting.
@@ -56,7 +56,7 @@ Counts the number of tokens used for the prompt.
 
 [count_tokens.webm](https://github.com/alopesmendes/DemoGemini/assets/56479133/46d6b5a4-0cee-4fff-b1fb-7b9b181d2467)
 
-## Contrubuting 
+## Contributing 
 - Ailton LOPES MENDES [@alopesmendes](https://github.com/alopesmendes)
 - Justine PATACO [@Aquarihus](https://github.com/Aquarihus)
 
