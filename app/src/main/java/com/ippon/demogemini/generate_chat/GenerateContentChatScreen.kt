@@ -39,10 +39,11 @@ import com.ippon.demogemini.core.StateData.*
 @Composable
 fun GenerateContentChatScreen(
     chatState: ChatState = ChatState(),
+    initialPrompt: String = "",
     onSend: (String) -> Unit,
 ) {
     var prompt by rememberSaveable {
-        mutableStateOf("")
+        mutableStateOf(initialPrompt)
     }
     Column(
         modifier = Modifier

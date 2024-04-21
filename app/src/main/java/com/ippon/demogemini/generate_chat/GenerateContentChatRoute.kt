@@ -13,5 +13,6 @@ internal fun GenerateContentChatRoute(
     GenerateContentChatScreen(
         chatState = chatState,
         onSend = generateContentChatViewModel::generateChat,
+        initialPrompt = "can you tell me you tell me about one piece"
     )
 }

@@ -15,5 +15,6 @@ fun GenerateContentStreamingScreen(
         onSend = onSend,
         isImagePickerEnabled = true,
         isStreamingResponse = true,
+        initialPrompt = "can you write a long poem about what you see on this image"
     )
 }

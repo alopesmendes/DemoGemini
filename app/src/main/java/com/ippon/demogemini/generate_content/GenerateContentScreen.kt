@@ -9,5 +9,9 @@ fun GenerateContentScreen(
     uiState: SummarizeUiState = SummarizeUiState.Initial,
     onSendPrompt: (String) -> Unit = {}
 ) {
-    SummarizeContainer(uiState = uiState, onSend = { _, s -> onSendPrompt(s) },)
+    SummarizeContainer(
+        uiState = uiState,
+        onSend = { _, s -> onSendPrompt(s) },
+        initialPrompt = "can you talk about one piece",
+    )
 }

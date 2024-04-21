@@ -35,12 +35,13 @@ import com.halilibo.richtext.ui.material3.RichText
 @Composable
 fun SummarizeContainer(
     uiState: SummarizeUiState,
+    initialPrompt: String = "",
     isStreamingResponse: Boolean = false,
     isImagePickerEnabled: Boolean = false,
     onSend: (Bitmap?, String) -> Unit,
 ) {
     var prompt by rememberSaveable {
-        mutableStateOf("")
+        mutableStateOf(initialPrompt)
     }
     Column(
         modifier = Modifier

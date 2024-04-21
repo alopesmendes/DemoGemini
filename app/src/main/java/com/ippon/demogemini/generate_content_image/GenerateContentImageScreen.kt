@@ -13,6 +13,7 @@ fun GenerateContentImageScreen(
     SummarizeContainer(
         uiState = uiState,
         isImagePickerEnabled = true,
+        initialPrompt = "can you tell me what you see in this image",
         onSend = { bitmap, s ->
             bitmap?.let {
                 onSend(it, s)

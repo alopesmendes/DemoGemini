@@ -38,7 +38,7 @@ fun GenerateContentBonusScreen(
     onSend: (Bitmap, String) -> Unit,
 ) {
     var prompt by rememberSaveable {
-        mutableStateOf("")
+        mutableStateOf("Can you tell me what you see in this picture")
     }
     Column(
         modifier = Modifier
