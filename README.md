@@ -1,5 +1,20 @@
 # DemoGemini
 
+<!-- TOC -->
+* [DemoGemini](#demogemini)
+  * [Getting started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Clone the project](#clone-the-project)
+    * [Run the project](#run-the-project)
+  * [Functionalities](#functionalities)
+    * [1. Generate content](#1-generate-content)
+    * [2. Generate Content Image](#2-generate-content-image)
+    * [3. Streaming](#3-streaming)
+    * [4. Generate Chat](#4-generate-chat)
+    * [5. Bonus](#5-bonus)
+  * [Contrubuting](#contrubuting-)
+<!-- TOC -->
+
 This project demonstrates the capabilities of Gemini, a large language model from Google, within an Android application. It showcases various functionalities for text generation, image-text generation, streaming responses, conversational interaction, and token counting.
 
 ## Getting started
