@@ -24,7 +24,7 @@ This project demonstrates the capabilities of Gemini, a large language model fro
 
 ### Clone the project
 ```bash
-git clone https://github.com/alopesmendes/DemoGemini
+git clone https://github.com/alopesmendes/DemoGemini.git
 ```
 ### Run the project
 Add your API Key into your `local.properties` file and rebuild the project.
