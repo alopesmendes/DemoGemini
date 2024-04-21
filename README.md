@@ -42,7 +42,7 @@ Counts the number of tokens used for the prompt.
 [count_tokens.webm](https://github.com/alopesmendes/DemoGemini/assets/56479133/46d6b5a4-0cee-4fff-b1fb-7b9b181d2467)
 
 ## Contrubuting 
-- Ailton LOPES MENDES @[alopesmendes](https://github.com/alopesmendes)
-- Justine PATACO @[Aquarihus](https://github.com/Aquarihus)
+- Ailton LOPES MENDES [@alopesmendes](https://github.com/alopesmendes)
+- Justine PATACO [@Aquarihus](https://github.com/Aquarihus)
 
 
