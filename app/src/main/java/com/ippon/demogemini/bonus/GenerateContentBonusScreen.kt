@@ -100,6 +100,7 @@ fun GenerateContentBonusScreen(
         CustomTextImageField(
             prompt = prompt,
             onValueChange = { prompt = it },
+            isOnlyImagePrompt = true,
             onSend = { bitmap, s ->
                 bitmap?.let {
                     onSend(it, s)
