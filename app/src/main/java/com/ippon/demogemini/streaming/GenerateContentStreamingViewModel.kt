@@ -41,8 +41,12 @@ class GenerateContentStreamingViewModel(
                 )
             }
             contentStream.collect { outputContent ->
-                _uiState.update {
-                    SummarizeUiState.Success(outputContent.text ?: "")
+                _uiState.update { oldState ->
+                    val text = outputContent.text ?: ""
+                    SummarizeUiState.Success(
+                        latestOutputText = text,
+                        outputTexts = listOf(*oldState.outputTexts.toTypedArray(), text),
+                    )
                 }
             }
         }

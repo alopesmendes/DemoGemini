@@ -37,7 +37,7 @@ class GenerateContentImageViewModel(
                 )
                 _uiState.update {
                     SummarizeUiState.Success(
-                        outputText = content.text ?: "",
+                        latestOutputText = content.text ?: "",
                     )
                 }
             } catch (e: Exception) {

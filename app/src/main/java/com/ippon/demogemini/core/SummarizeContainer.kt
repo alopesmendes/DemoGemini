@@ -16,15 +16,11 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -76,17 +72,11 @@ fun SummarizeContainer(
                             contentDescription = "Person Icon"
                         )
                         if (isStreamingResponse) {
-                            val outputTexts: SnapshotStateList<String> = remember {
-                                mutableStateListOf("")
-                            }
                             var index by rememberSaveable {
                                 mutableIntStateOf(0)
                             }
-                            LaunchedEffect(uiState.outputText) {
-                                outputTexts.add(uiState.outputText.trimIndent())
-                            }
                             TypewriterTextEffect(
-                                text = outputTexts.getOrElse(index = index, defaultValue = { "" }),
+                                text = uiState.outputTexts.getOrElse(index = index, defaultValue = { "" }),
                                 onEffectCompleted = {
                                     index++
                                 },
@@ -98,7 +88,7 @@ fun SummarizeContainer(
                             }
                         } else {
                             RichText(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                                Markdown(uiState.outputText.trimIndent())
+                                Markdown(uiState.latestOutputText.trimIndent())
                             }
                         }
 
@@ -107,7 +97,7 @@ fun SummarizeContainer(
 
                 is SummarizeUiState.Error -> {
                     Text(
-                        text = uiState.errorMessage,
+                        text = uiState.errorMessage ?: "",
                         color = Color.Red,
                         modifier = Modifier.padding(all = 8.dp)
                     )
