@@ -30,25 +30,30 @@ class GenerateContentStreamingViewModel(
         }
 
         viewModelScope.launch {
-            val contentStream = if (imageBitmap == null) {
-                generativeModel.generateContentStream(prompt)
-            } else {
-                generativeModelVision.generateContentStream(
-                    content {
-                        image(imageBitmap)
-                        text(prompt)
-                    }
-                )
-            }
-            contentStream.collect { outputContent ->
-                _uiState.update { oldState ->
-                    val text = outputContent.text ?: ""
-                    SummarizeUiState.Success(
-                        latestOutputText = text,
-                        outputTexts = listOf(*oldState.outputTexts.toTypedArray(), text),
+            try {
+                val contentStream = if (imageBitmap == null) {
+                    generativeModel.generateContentStream(prompt)
+                } else {
+                    generativeModelVision.generateContentStream(
+                        content {
+                            image(imageBitmap)
+                            text(prompt)
+                        }
                     )
                 }
+                contentStream.collect { outputContent ->
+                    _uiState.update { oldState ->
+                        val text = outputContent.text ?: ""
+                        SummarizeUiState.Success(
+                            latestOutputText = text,
+                            outputTexts = listOf(*oldState.outputTexts.toTypedArray(), text),
+                        )
+                    }
+                }
+            } catch (e: Exception) {
+                _uiState.update { SummarizeUiState.Error(e.message ?: "") }
             }
+
         }
     }
 }

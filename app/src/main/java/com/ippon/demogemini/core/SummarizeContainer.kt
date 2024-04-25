@@ -76,7 +76,7 @@ fun SummarizeContainer(
                                 mutableIntStateOf(0)
                             }
                             TypewriterTextEffect(
-                                text = uiState.outputTexts.getOrElse(index = index, defaultValue = { "" }),
+                                text = uiState.outputTexts.getOrElse(index = index, defaultValue = { uiState.latestOutputText }),
                                 onEffectCompleted = {
                                     index++
                                 },
