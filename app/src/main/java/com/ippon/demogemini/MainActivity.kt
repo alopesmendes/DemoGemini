@@ -16,11 +16,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val generativeModel = GenerativeModel(
-            modelName = "gemini-pro",
-            apiKey = BuildConfig.apiKey
-        )
-        val generativeModelVision = GenerativeModel(
-            modelName = "gemini-pro-vision",
+            modelName = "gemini-1.5-flash",
             apiKey = BuildConfig.apiKey
         )
         val chat = generativeModel.startChat()
@@ -33,7 +29,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavigationHost(
                         generativeModel = generativeModel,
-                        generativeModelVision = generativeModelVision,
                         chat = chat,
                     )
                 }

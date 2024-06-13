@@ -26,7 +26,6 @@ import com.ippon.demogemini.streaming.GenerateContentStreamingViewModel
 fun NavigationHost(
     chat: Chat,
     generativeModel: GenerativeModel,
-    generativeModelVision: GenerativeModel,
 ) {
     val navController = rememberNavController()
     var selectedDestination: Destination? by remember {
@@ -64,7 +63,7 @@ fun NavigationHost(
             route = Destination.GenerateContentImage.route,
         ) {
             val generateContentImageViewModel = GenerateContentImageViewModel(
-                generativeModel = generativeModelVision
+                generativeModel = generativeModel
             )
             ContainerScreen(
                 destinations = destinations,
@@ -82,7 +81,7 @@ fun NavigationHost(
         ) {
             val generateContentStreamingViewModel = GenerateContentStreamingViewModel(
                 generativeModel = generativeModel,
-                generativeModelVision = generativeModelVision,
+                generativeModelVision = generativeModel,
             )
             ContainerScreen(
                 destinations = destinations,
@@ -116,7 +115,7 @@ fun NavigationHost(
             route = Destination.Bonus.route,
         ) {
             val generateContentBonusViewModel = GenerateContentBonusViewModel(
-                generativeModelVision
+                generativeModel
             )
             ContainerScreen(
                 destinations = destinations,
